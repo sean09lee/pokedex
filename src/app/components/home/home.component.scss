@@ -1,12 +1,10 @@
 .container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: url(../../../assets/background.jpg) no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
+  min-height: 100vh;
+  background: url(../../../assets/pokeball.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   .title {
     color: white;
@@ -14,4 +12,8 @@
     padding:50px 20px;
   }
 
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

@@ -4,4 +4,17 @@ html, body {
   padding: 0;
 
   height: 100%;
+  color: white;
 }
+
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+ @import "app/styles/global.scss";
+
+ // Theme variables, must be included before the libraries to allow overriding defaults
+ @import "app/styles/theme/theme-variables";
+
+ // Theme customization
+ @import "app/styles/theme/theme";

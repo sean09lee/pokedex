@@ -3,19 +3,22 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+// services
 import { ElectronService } from './providers/electron.service';
+import { PokemonService } from './services/pokemon.service';
 
+// directives
 import { WebviewDirective } from './directives/webview.directive';
 
+// components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
@@ -35,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +47,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    PokemonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
