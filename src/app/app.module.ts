@@ -12,8 +12,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // services
-import { ElectronService } from './providers/electron.service';
+import { ElectronService } from './services/electron.service';
 import { PokemonService } from './services/pokemon.service';
+
+// globals & offline database
+import { Globals } from './utilities/globals.utilities';
+import { PokemonDatabase } from './database/pokemon.database';
 
 // directives
 import { WebviewDirective } from './directives/webview.directive';
@@ -49,7 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    PokemonService
+    PokemonService,
+    PokemonDatabase,
+    Globals
   ],
   bootstrap: [AppComponent]
 })

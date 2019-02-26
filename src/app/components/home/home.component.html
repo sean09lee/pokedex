@@ -3,7 +3,10 @@
   <div class="content">
     <div class="pokemon" *ngFor="let pokemon of pokemons">
         <mat-card>
-            <mat-card-title>{{ pokemon.name }}</mat-card-title>
+            <mat-card-title>#{{pokemon.id}} {{pokemon.name}}</mat-card-title>
+            <mat-card-content class="center">
+              <img [src]="pokemon.url"/>
+            </mat-card-content>
         </mat-card>
     </div>
   </div>
