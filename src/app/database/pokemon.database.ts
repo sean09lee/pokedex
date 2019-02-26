@@ -12,7 +12,7 @@ export class PokemonDatabase {
       this.db.transaction('rw', this.db.pokemon, async() => {
         // Make sure we have something in DB:
         if ((await this.db.pokemon.where({name: pokemon.name}).count()) === 0) {
-            const id = await this.db.pokemon.add({id: pokemon.id, name: pokemon.name, url: pokemon.url});
+            const id = await this.db.pokemon.add(pokemon);
             console.log(`Pokemon added with id ${id}`);
         }
       }).catch(e => {
@@ -24,7 +24,7 @@ export class PokemonDatabase {
       this.db.transaction('rw', this.db.pokemon, async() => {
         // Make sure we have something in DB:
         if ((await this.db.pokemon.where({id: pokemon.id}).count()) > 0) {
-            const id = await this.db.pokemon.add({id: pokemon.id, name: pokemon.name, url: pokemon.url});
+            const id = await this.db.pokemon.add(pokemon);
             console.log(`Pokemon added with id ${id}`);
         }
       }).catch(e => {
