@@ -1,8 +1,9 @@
 <div class="container">
   <h1 class="title">Pokedex</h1>
   <div class="content">
-    <div class="pokemon" *ngFor="let pokemon of pokemons">
-        <mat-card>
+    <div class="search"></div>
+    <div class="pokemon-container" layout="row" layout-wrap>
+        <mat-card class="pokemon" *ngFor="let pokemon of pokemons">
             <mat-card-title>#{{pokemon.id}} {{pokemon.name}}</mat-card-title>
             <mat-card-content class="center">
               <img [src]="pokemon.safeUrl" [alt]="pokemon.name"/>

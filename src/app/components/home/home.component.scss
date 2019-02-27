@@ -20,5 +20,18 @@
       display: flex;
       justify-content: center;
     }
+
+    .pokemon-container {
+      display: flex;
+      flex-wrap: wrap;
+
+      .pokemon {
+        flex: 0 1 calc(33.3%);
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
   }
 }
