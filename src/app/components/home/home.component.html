@@ -3,6 +3,7 @@
   <div class="content">
     <div class="search"></div>
     <div class="pokemon-container" layout="row" layout-wrap>
+        <mat-spinner class="center" *ngIf="loading"></mat-spinner>
         <mat-card class="pokemon" *ngFor="let pokemon of pokemons">
             <mat-card-title>#{{pokemon.id}} {{pokemon.name}}</mat-card-title>
             <mat-card-content class="center">
