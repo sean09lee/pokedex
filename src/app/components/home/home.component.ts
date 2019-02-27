@@ -9,10 +9,12 @@ import { PokemonModel } from '../../models/pokemon.model';
 })
 export class HomeComponent implements OnInit {
   public pokemons: PokemonModel[] = [];
+  public loading = true;
 
   constructor(private pokemonService: PokemonService) {
     this.pokemonService.pokemon.subscribe((pokemons: PokemonModel[]) => {
       this.pokemons = pokemons;
+      this.loading = false;
     });
   }
 

@@ -1,18 +1,22 @@
 {
-  "name": "angular-electron",
+  "name": "pokedex",
   "version": "5.1.0",
-  "description": "Angular 7 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "description": "Pokedex Angular 7 with Electron application",
+  "homepage": "https://github.com/sean09lee/pokedex",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Sean Lee",
+    "email": "sean09lee@gmail.com"
   },
   "keywords": [
     "angular",
     "angular 7",
     "electron",
     "typescript",
-    "sass"
+    "sass",
+    "material",
+    "offline",
+    "indexeddb",
+    "workbox"
   ],
   "main": "main.js",
   "private": true,

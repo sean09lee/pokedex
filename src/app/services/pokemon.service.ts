@@ -78,7 +78,9 @@ export class PokemonService {
 
     private setSafeUrl(data: PokemonModel[]): PokemonModel[] {
       data.map((pokemon: PokemonModel) => {
-        pokemon.safeUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(pokemon.blob));
+        if (pokemon && pokemon.blob) {
+          pokemon.safeUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(pokemon.blob));
+        }
       });
       return data;
     }
