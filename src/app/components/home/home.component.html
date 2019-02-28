@@ -2,9 +2,14 @@
   <h1 class="title center">Pokedex</h1>
   <div class="content">
     <div class="search">
-        <button mat-raised-button (click)="updateDb()">Update offline database</button>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Pokemon">
+        <button mat-raised-button (click)="updateDb()" mat-icon-button>
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <mat-form-field class="w-75">
+          <input matInput type="text" placeholder="Search pokemon by name" [(ngModel)]="search" (change)="onSearchChange(search)"/>
+          <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+              <mat-icon>close</mat-icon>
+          </button>
         </mat-form-field>
     </div>
     <div class="spinner-container center" *ngIf="loading">
