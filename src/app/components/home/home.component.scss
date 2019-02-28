@@ -46,6 +46,11 @@
           .stats {
             max-height: 100px;
             overflow-y: scroll;
+            width: 100%;
+
+            &::-webkit-scrollbar {
+              width: 0 !important
+            }
 
             .stat {
               padding: 5px 0;
