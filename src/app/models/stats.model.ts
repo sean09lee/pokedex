@@ -1,7 +1,7 @@
 export class StatsModel {
   name: StatName;
   base_stat: number;
-  effor: number;
+  effort: number;
 }
 
 export class StatName {

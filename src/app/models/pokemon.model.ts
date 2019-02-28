@@ -11,4 +11,5 @@ export class PokemonModel {
   height: number;
   weight: number;
   stats: StatsModel[];
+  flipped: boolean;
 }

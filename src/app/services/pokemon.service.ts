@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Globals } from '../utilities/globals.utilities';
 import { PokemonDatabase } from '../database/pokemon.database';
 import { DomSanitizer } from '@angular/platform-browser';
+import { StatsModel } from '../models/stats.model';
 
 @Injectable()
 export class PokemonService {
@@ -89,6 +90,9 @@ export class PokemonService {
       const data: any = await this.httpClient.get(pokemon.url).toPromise();
       const res: any = await this.http.get(data.sprites.front_default, {responseType: ResponseContentType.Blob}).toPromise();
       const blob = new Blob([res._body], {type: res.headers.get('Content-Type')});
+      pokemon.stats = data.stats as StatsModel[];
+      pokemon.height = data.height;
+      pokemon.weight = data.weight;
       pokemon.blob = blob;
       pokemon.id = data.id;
       return pokemon;

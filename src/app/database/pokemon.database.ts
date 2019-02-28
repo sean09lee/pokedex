@@ -47,7 +47,6 @@ export class PokemonDexie extends Dexie {
       });
       this.pokemon = this.table('pokemon');
       this.initStoragePersistence();
-      this.showEstimatedQuota();
   }
 
   private async persist(): Promise<boolean> {
@@ -71,8 +70,10 @@ export class PokemonDexie extends Dexie {
         break;
       case 'prompt':
         console.log('Not persisted, but we may prompt user when we want to.');
+        await this.persist();
         break;
     }
+    this.showEstimatedQuota();
   }
 
   private async tryPersistWithoutPromtingUser() {
@@ -91,7 +92,7 @@ export class PokemonDexie extends Dexie {
       name: 'persistent-storage'
     });
     if (permission.status === 'granted') {
-      persisted = await navigator.storage.persist();
+      persisted = await this.persist();
       if (persisted) {
         return 'persisted';
       } else {

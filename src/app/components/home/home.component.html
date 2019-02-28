@@ -4,10 +4,19 @@
     <div class="search"></div>
     <div class="pokemon-container" layout="row" layout-wrap>
         <mat-spinner class="center" *ngIf="loading"></mat-spinner>
-        <mat-card class="pokemon" *ngFor="let pokemon of pokemons">
+        <mat-card class="pokemon" *ngFor="let pokemon of pokemons" (click)="pokemon.flipped = !pokemon.flipped" [class.flip]="pokemon.flipped">
             <mat-card-title>#{{pokemon.id}} {{pokemon.name}}</mat-card-title>
             <mat-card-content class="center">
-              <img [src]="pokemon.safeUrl" [alt]="pokemon.name"/>
+              <img [src]="pokemon.safeUrl" [alt]="pokemon.name" *ngIf="!pokemon.flipped"/>
+              <div class="stats" *ngIf="pokemon.flipped">
+                  <p>Weight: {{ pokemon.weight }}</p>
+                  <p>Height: {{ pokemon.height }}</p>
+                  <div class="stat" *ngFor="let stat of pokemon.stats">
+                    <p class="name">{{ stat.stat.name }}</p>
+                    <p>Base Stat: {{ stat.base_stat }}</p>
+                    <p>Effort: {{ stat.effort }}</p>
+                  </div>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
