@@ -24,10 +24,10 @@ export class PokemonService {
         this.baseEndpoint = `https://pokeapi.co/api/v2/`;
     }
 
-    public async initializePokemon(): Promise<boolean> {
+    public async initializePokemon(update: boolean = false): Promise<boolean> {
       // first, try and get from indexeddb
       let pokemon: PokemonModel[] = await this.getFromIndexedDB();
-      if (pokemon && pokemon.length > 0) {
+      if (!update && pokemon && pokemon.length > 0) {
         this.pokemonSubject.next(pokemon);
         return true;
       }

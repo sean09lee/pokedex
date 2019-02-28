@@ -1,9 +1,16 @@
 <div class="container">
   <h1 class="title center">Pokedex</h1>
   <div class="content">
-    <div class="search"></div>
-    <div class="pokemon-container" layout="row" layout-wrap>
-        <mat-spinner class="center" *ngIf="loading"></mat-spinner>
+    <div class="search">
+        <button mat-raised-button (click)="updateDb()">Update offline database</button>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Pokemon">
+        </mat-form-field>
+    </div>
+    <div class="spinner-container center" *ngIf="loading">
+        <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    <div class="pokemon-container" layout="row" layout-wrap *ngIf="!loading">
         <mat-card class="pokemon" *ngFor="let pokemon of pokemons" (click)="pokemon.flipped = !pokemon.flipped" [class.flip]="pokemon.flipped">
             <mat-card-title>#{{pokemon.id}} {{pokemon.name}}</mat-card-title>
             <mat-card-content class="center">

@@ -22,4 +22,9 @@ export class HomeComponent implements OnInit {
     this.pokemonService.initializePokemon();
   }
 
+  public updateDb(): void {
+    this.loading = true;
+    this.pokemonService.initializePokemon(true);
+  }
+
 }
