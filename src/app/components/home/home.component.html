@@ -1,16 +1,24 @@
 <div class="container">
   <h1 class="title center">Pokedex</h1>
   <div class="content">
+    <div class="download center" *ngIf="!isElectron">
+      <a href="assets/pokedex.exe" class="windows">
+        <img src="assets/get_windows.png" alt="English windows badge"/>
+      </a>
+      <a href="assets/pokedex.exe" class="apple">
+        <img src="assets/get_apple.svg" alt="English apple badge" />
+      </a>
+    </div>
     <div class="search">
-        <button mat-raised-button (click)="refresh()" mat-icon-button>
-          <mat-icon>refresh</mat-icon>
-        </button>
         <mat-form-field class="w-75">
           <input matInput type="text" placeholder="Search pokemon by name" [(ngModel)]="search" (change)="onSearchChange(search)"/>
           <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
               <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
+        <button mat-raised-button (click)="refresh()" mat-icon-button>
+          <mat-icon>refresh</mat-icon>
+        </button>
     </div>
     <div class="spinner-container center" *ngIf="loading">
         <mat-spinner class="spinner"></mat-spinner>

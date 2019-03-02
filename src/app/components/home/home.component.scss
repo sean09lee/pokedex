@@ -39,6 +39,19 @@
     display: flex;
     flex-wrap: wrap;
 
+    .download {
+      width: 100%;
+
+      img {
+        width: 150px;
+        padding: 10px;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
     .search {
       width: 100%;
       text-align: center;
