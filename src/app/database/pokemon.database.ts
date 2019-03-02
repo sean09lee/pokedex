@@ -80,8 +80,7 @@ export class PokemonDexie extends Dexie {
     if (!navigator.storage || !navigator.storage.persisted) {
       return 'never';
     }
-    let persisted = await navigator.storage.persisted();
-    if (persisted) {
+    if (this.isStoragePersisted()) {
       return 'persisted';
     }
     const nav: any = window.navigator;
@@ -92,7 +91,7 @@ export class PokemonDexie extends Dexie {
       name: 'persistent-storage'
     });
     if (permission.status === 'granted') {
-      persisted = await this.persist();
+      const persisted = await this.persist();
       if (persisted) {
         return 'persisted';
       } else {

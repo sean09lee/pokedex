@@ -1,24 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-@font-face {
-    font-family: 'Metropolis';
-    src: url("https://xenoreporting.blob.core.windows.net/fonts/Metropolis-Regular.otf") format('opentype');
-}
-
-* {
-    font-family: 'Metropolis', 'Roboto';
-}
-
 html, body {
     margin: 0;
     width: 100%;
     height: 100%;
     font-size: 20px;
 }
-
-
-// .mat-focused {
-//     background-image: linear-gradient(to bottom, white, white), linear-gradient(to bottom, silver, silver);
-// }
 
 .mat-focused, .mat-form-field-label, .mat-input-element {
     color: white !important;
