@@ -32,16 +32,22 @@ export class PokemonService {
         return true;
       }
 
-      pokemon = await this.getFromAPI();
+      const data = await this.getFromAPI();
+      if (data && data.length > 0) {
+        console.log('Retrieved data from api successfully');
+        pokemon = data;
+      }
+
       if (pokemon && pokemon.length > 0) {
         // set offline storage values
-        console.log('Retrieved data from api successfully');
         this.setIndexedDb(pokemon);
         this.setSafeUrl(pokemon);
 
         this.pokemonSubject.next(pokemon);
         return true;
       } else {
+        console.log('Data could not be retrieved from API or IndexedDB.');
+        this.pokemonSubject.next([]);
         return false;
       }
     }
@@ -63,7 +69,9 @@ export class PokemonService {
 
     private async getFromAPI(): Promise<PokemonModel[]> {
       const endpoint = `${this.baseEndpoint}pokemon`;
-      const response: any = await this.httpClient.get(endpoint).toPromise();
+      const response: any = await this.httpClient.get(endpoint).toPromise().catch(() => {
+        console.log('API failed to return data.');
+      });
 
       if (response && response.count && response.count > 0) {
         const pokemons: PokemonModel[] = response.results as PokemonModel[];

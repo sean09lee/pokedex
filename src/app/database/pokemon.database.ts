@@ -14,10 +14,10 @@ export class PokemonDatabase {
         const matching: number = await this.db.pokemon.where({name: pokemon.name}).count();
         if (matching === 0) {
           const id = await this.db.pokemon.add(pokemon);
-          console.log(`Pokemon added with id ${id}`);
+          console.debug(`Pokemon added with id ${id}`);
         } else if (matching === 1) {
           const id = await this.db.pokemon.put(pokemon);
-          console.log(`Pokemon updated with id ${id}`);
+          console.debug(`Pokemon updated with id ${id}`);
         }
       }).catch(e => {
           console.error(e.stack || e);
