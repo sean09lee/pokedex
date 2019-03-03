@@ -36,7 +36,6 @@ export class PokemonService {
       if (pokemon && pokemon.length > 0) {
         // set offline storage values
         console.log('Retrieved data from api successfully');
-        this.setLocalStorage(pokemon);
         this.setIndexedDb(pokemon);
         this.setSafeUrl(pokemon);
 
