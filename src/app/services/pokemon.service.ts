@@ -46,7 +46,6 @@ export class PokemonService {
         this.pokemonSubject.next(pokemon);
         return true;
       } else {
-        console.log('Data could not be retrieved from API or IndexedDB.');
         this.pokemonSubject.next([]);
         return false;
       }
@@ -59,18 +58,24 @@ export class PokemonService {
     }
 
     private async getFromIndexedDB(): Promise<PokemonModel[]> {
-      const data: PokemonModel[] = await this.db.pokemon.toArray();
+      let data: PokemonModel[] = [];
+      try {
+        data = await this.db.pokemon.toArray();
+      } catch {
+        console.warn('Data could not be retrieved from IndexedDB.');
+      }
+
       if (data) {
         this.setSafeUrl(data);
-        return data;
       }
-      return [];
+
+      return data;
     }
 
     private async getFromAPI(): Promise<PokemonModel[]> {
       const endpoint = `${this.baseEndpoint}pokemon`;
       const response: any = await this.httpClient.get(endpoint).toPromise().catch(() => {
-        console.log('API failed to return data.');
+        console.warn('Data could not be retrieved from API.');
       });
 
       if (response && response.count && response.count > 0) {

@@ -20,7 +20,8 @@ export class PokemonDatabase {
           console.debug(`Pokemon updated with id ${id}`);
         }
       }).catch(e => {
-          console.error(e.stack || e);
+          console.warn('Failed to setup offline database: IndexedDB');
+          console.debug(e.stack || e);
       });
     }
 
@@ -95,7 +96,7 @@ export class PokemonDexie extends Dexie {
       if (persisted) {
         return 'persisted';
       } else {
-        throw new Error('Failed to persist');
+        console.log('Failed to persist');
       }
     }
     if (permission.status === 'prompt') {
@@ -110,7 +111,7 @@ export class PokemonDexie extends Dexie {
       console.log(`Quota: ${estimation.quota}`);
       console.log(`Usage: ${estimation.usage}`);
     } else {
-      console.error('StorageManager not found');
+      console.log('StorageManager not found');
     }
   }
 }
