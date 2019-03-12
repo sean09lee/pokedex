@@ -7,6 +7,7 @@ export class PokemonModel {
   url: string;
   safeUrl: SafeUrl;
   blob: Blob;
+  base64blob: string;
   baseExperience: number;
   height: number;
   weight: number;

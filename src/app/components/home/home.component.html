@@ -2,22 +2,29 @@
   <h1 class="title center">Pokedex</h1>
   <div class="content">
     <div class="download center" *ngIf="!isElectron">
-      <a href="https://recess5978919754.blob.core.windows.net/pokedex/pokedex.exe" class="windows">
+      <a href="https://recess5978919754.blob.core.windows.net/pokedex/pokedex-installer.exe" class="windows">
         <img src="assets/get_windows.png" alt="English windows badge"/>
       </a>
-      <a href="https://recess5978919754.blob.core.windows.net/pokedex/pokedex.exe" class="apple">
+      <a href="https://recess5978919754.blob.core.windows.net/pokedex/pokedex-installer.exe" class="apple">
         <img src="assets/get_apple.svg" alt="English apple badge" />
       </a>
     </div>
     <div class="search">
+        <button mat-raised-button (click)="refresh()" mat-icon-button>
+          <mat-icon>refresh</mat-icon>
+        </button>
         <mat-form-field class="w-75">
           <input matInput type="text" placeholder="Search pokemon by name" [(ngModel)]="search" (change)="onSearchChange(search)"/>
           <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
               <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
-        <button mat-raised-button (click)="refresh()" mat-icon-button>
-          <mat-icon>refresh</mat-icon>
+        <button mat-raised-button (click)="save()" mat-icon-button download="pokemon.json">
+          <mat-icon>save</mat-icon>
+        </button>
+        <input type="file" #file style="display: none" (change)="onFileUploaded()" />
+        <button type="file" mat-raised-button (click)="upload()" mat-icon-button>
+          <mat-icon>cloud_upload</mat-icon>
         </button>
     </div>
     <div class="spinner-container center" *ngIf="loading">

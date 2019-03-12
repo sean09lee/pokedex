@@ -5,10 +5,11 @@ import { Injectable } from '@angular/core';
 import { ipcRenderer, webFrame, remote } from 'electron';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
+import { PokemonModel } from '../models/pokemon.model';
 
 @Injectable()
 export class ElectronService {
-
+  private path = `C:/deloitte/pokemon.json`;
   ipcRenderer: typeof ipcRenderer;
   webFrame: typeof webFrame;
   remote: typeof remote;
@@ -27,8 +28,17 @@ export class ElectronService {
     }
   }
 
-  isElectron = () => {
+  public isElectron = () => {
     return window && window.process && window.process.type;
   }
 
+  public saveFile(content: string): void {
+    this.fs.writeFileSync(this.path, content);
+  }
+
+  public upload(): PokemonModel[] {
+    const result = this.fs.readFileSync(this.path, 'utf8');
+    const pokemon: PokemonModel[] = JSON.parse(result);
+    return pokemon;
+  }
 }

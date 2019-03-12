@@ -1,6 +1,6 @@
 {
   "name": "pokedex",
-  "version": "5.1.0",
+  "version": "v1.0.0",
   "description": "Pokedex Angular 7 with Electron application",
   "homepage": "https://github.com/sean09lee/pokedex",
   "author": {
@@ -16,7 +16,7 @@
     "material",
     "offline",
     "indexeddb",
-    "workbox"
+    "ngsw"
   ],
   "main": "main.js",
   "private": true,
@@ -43,7 +43,9 @@
     "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "dependencies": {
-    "@angular/pwa": "^0.13.4"
+    "@angular/pwa": "^0.13.4",
+    "electron-log": "^3.0.1",
+    "electron-updater": "^4.0.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.12.1",
@@ -52,7 +54,7 @@
     "@angular/cli": "7.2.1",
     "@angular/common": "7.2.0",
     "@angular/compiler": "7.2.0",
-    "@angular/compiler-cli": "7.2.0",
+    "@angular/compiler-cli": "^7.2.7",
     "@angular/core": "7.2.0",
     "@angular/forms": "7.2.0",
     "@angular/http": "7.2.0",
@@ -64,17 +66,20 @@
     "@angular/service-worker": "7.2.0",
     "@ngx-translate/core": "11.0.1",
     "@ngx-translate/http-loader": "4.0.0",
+    "@types/file-saver": "^2.0.0",
     "@types/jasmine": "2.8.7",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "8.9.4",
     "@types/w3c-permissions": "^1.0.1",
+    "blob-util": "^2.0.2",
     "codelyzer": "4.5.0",
     "conventional-changelog-cli": "2.0.11",
     "core-js": "2.6.1",
     "dexie": "^2.0.4",
     "electron": "4.0.0",
-    "electron-builder": "20.36.2",
+    "electron-builder": "^20.39.0",
     "electron-reload": "1.3.0",
+    "file-saver": "^2.0.1",
     "hammerjs": "^2.0.8",
     "jasmine-core": "3.3.0",
     "jasmine-spec-reporter": "4.2.1",

@@ -12,21 +12,4 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule, {
     preserveWhitespaces: false
   }).then(() => {
-    // registerServiceWorker('sw');
-  })
-  .catch(err => console.error(err));
-
-function registerServiceWorker(swName: string) {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register(`/${swName}.js`)
-      .then(reg => {
-        console.log('[App] Successful service worker registration', reg);
-      })
-      .catch(err =>
-        console.log('[App] Service worker registration failed', err)
-      );
-  } else {
-    console.log('[App] Service Worker API is not supported in current browser');
-  }
-}
+  }).catch(err => console.error(err));

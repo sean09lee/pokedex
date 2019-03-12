@@ -8,6 +8,14 @@ export class PokemonDatabase {
 
     public pokemon: Dexie.Table<PokemonModel, number> = this.db.pokemon;
 
+    public reinitialize(): void {
+      try {
+        this.db = new PokemonDexie();
+      } catch {
+        console.warn('DB initialization errors..');
+      }
+    }
+
     public addPokemon(pokemon: PokemonModel) {
       this.db.transaction('rw', this.db.pokemon, async() => {
         // Make sure we have something in DB:

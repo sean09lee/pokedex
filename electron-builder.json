@@ -1,27 +1,30 @@
 {
+  "appId": "com.electron.pokedex",
   "productName": "pokedex",
+  "copyright": "Copyright ©2018 ${author}",
   "directories": {
     "output": "release/"
   },
-    "files": [
-        "**/*",
-        "!**/*.ts",
-        "!*.code-workspace",
-        "!LICENSE.md",
-        "!package.json",
-        "!package-lock.json",
-        "!src/",
-        "!e2e/",
-        "!hooks/",
-        "!angular.json",
-        "!_config.yml",
-        "!karma.conf.js",
-        "!tsconfig.json",
-        "!tslint.json"
-    ],
+  "files": [
+      "**/*",
+      "!**/*.ts",
+      "!*.code-workspace",
+      "!LICENSE.md",
+      "!package.json",
+      "!package-lock.json",
+      "!src/",
+      "!e2e/",
+      "!hooks/",
+      "!angular.json",
+      "!_config.yml",
+      "!karma.conf.js",
+      "!tsconfig.json",
+      "!tslint.json"
+  ],
   "win": {
+    "artifactName": "${productName}-installer.${ext}",
     "target": [
-      "portable"
+      "nsis"
     ]
   },
   "mac": {
@@ -33,5 +36,13 @@
     "target": [
       "AppImage"
     ]
+  },
+  "nsis": {
+    "deleteAppDataOnUninstall": true,
+    "include": "build/installer.nsh"
+  },
+  "publish": {
+    "provider": "generic",
+    "url": "https://recess5978919754.blob.core.windows.net/pokedex"
   }
 }
